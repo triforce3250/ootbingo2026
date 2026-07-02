@@ -39,37 +39,41 @@
         /* Simple CSS Tabs */
         .tabs {
             display: flex;
-            justify-content: flex-start; /* Changed from center to align left on mobile overflow */
             margin-bottom: 25px;
             border-bottom: 1px solid #444;
             
-            /* Responsive Touch-Scroll Support */
-            overflow-x: auto;            /* 1. Allows horizontal scrolling if buttons take up too much room */
-            white-space: nowrap;          /* 2. Prevents the text inside buttons from breaking onto two lines */
-            -webkit-overflow-scrolling: touch; /* 3. Makes the scrolling smooth on iOS devices */
+            /* Mobile Touch-Scroll Configuration */
+            justify-content: flex-start; /* Left-aligned for mobile scrolling */
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
-        
-        /* Hides the desktop scrollbar on the tabs bar so it looks completely seamless */
+        /* Desktop specific styles: Centering the tabs when space allows */
+        @media (min-width: 768px) {
+            .tabs {
+                justify-content: center; /* Centers tabs beautifully on desktop */
+            }
+        }
         .tabs::-webkit-scrollbar {
-            display: none;
+            display: none; /* Hides the scrollbar to keep it looking clean */
         }
         .tab-btn {
             background: none;
             border: none;
             color: #aaa;
-            padding: 12px 20px;          /* Slightly reduced horizontal padding for better mobile framing */
+            padding: 12px 20px;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
             transition: all 0.2s ease;
-            flex-shrink: 0;              /* 4. CRITICAL: Prevents buttons from being squished or shrunk by the browser */
+            flex-shrink: 0; /* Keeps buttons from squishing on mobile */
         }
-        .tab-btn:hover {
-            color: #ffcc00;
-        }
-        .tab-btn.active {
-            color: #ffcc00;
-            border-bottom: 3px solid #ffcc00;
+        /* Responsive Wrapper for Tables */
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* Allows the table to be swiped on mobile if it's too wide */
+            -webkit-overflow-scrolling: touch;
+            margin-top: 15px;
         }
         .tab-content {
             display: none;
@@ -215,37 +219,39 @@
     <!-- Schedule Tab -->
     <div id="schedule" class="tab-content active">
         <h2>Important Tournament Dates</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Timeline</th>
-                    <th>Dates</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="highlight">Seeding Races</td>
-                    <td>August 15th - 28th</td>
-                    <td>ESNB, SNB, and 5 others (see Rules & Format tab). Best of first 3 times <i>OR</i> <a href="https://xwmtp.github.io/bingo-leaderboard/">Bingo Leaderboard</a> time.</td>
-                </tr>
-                <tr>
-                    <td class="highlight">Signups Close</td>
-                    <td>August 28th</td>
-                    <td>Open until August 28th at 11:59PM US-Western (UTC-7). Sign up through the <a href="https://discord.gg/tytRDaRVsA">OoT Bingo Tournaments Discord</a>.</td>
-                </tr>
-                <tr>
-                    <td class="highlight">Group Phase</td>
-                    <td>August 30th - September 20th</td>
-                    <td>3 weeks long, 1 match per week.</td>
-                </tr>
-                <tr>
-                    <td class="highlight">Single Elimination Bracket</td>
-                    <td>September 20th - October 18th/25th</td>
-                    <td>Top 16 (or Top 24 if there are 32+ entrants).</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timeline</th>
+                        <th>Dates</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="highlight">Seeding Races</td>
+                        <td>August 15th - 28th</td>
+                        <td>ESNB, SNB, and 5 others (see Rules & Format tab). Best of first 3 times <i>OR</i> <a href="https://xwmtp.github.io/bingo-leaderboard/">Bingo Leaderboard</a> time.</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Signups Close</td>
+                        <td>August 28th</td>
+                        <td>Open until August 28th at 11:59PM US-Western (UTC-7). Sign up through the <a href="https://discord.gg/tytRDaRVsA">OoT Bingo Tournaments Discord</a>.</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Group Phase</td>
+                        <td>August 30th - September 20th</td>
+                        <td>3 weeks long, 1 match per week.</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Single Elimination Bracket</td>
+                        <td>September 20th - October 18th/25th</td>
+                        <td>Top 16 (or Top 24 if there are 32+ entrants).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Rules Tab -->
