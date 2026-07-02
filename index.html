@@ -39,19 +39,31 @@
         /* Simple CSS Tabs */
         .tabs {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Changed from center to align left on mobile overflow */
             margin-bottom: 25px;
             border-bottom: 1px solid #444;
+            
+            /* Responsive Touch-Scroll Support */
+            overflow-x: auto;            /* 1. Allows horizontal scrolling if buttons take up too much room */
+            white-space: nowrap;          /* 2. Prevents the text inside buttons from breaking onto two lines */
+            -webkit-overflow-scrolling: touch; /* 3. Makes the scrolling smooth on iOS devices */
         }
+        
+        /* Hides the desktop scrollbar on the tabs bar so it looks completely seamless */
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
         .tab-btn {
             background: none;
             border: none;
             color: #aaa;
-            padding: 12px 24px;
+            padding: 12px 20px;          /* Slightly reduced horizontal padding for better mobile framing */
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
             transition: all 0.2s ease;
+            flex-shrink: 0;              /* 4. CRITICAL: Prevents buttons from being squished or shrunk by the browser */
         }
         .tab-btn:hover {
             color: #ffcc00;
@@ -248,8 +260,8 @@
         <h3>General Information</h3>
         <ul class="rules-list">
             <li><strong>Sign-up Deadline:</strong> Closes on <span class="highlight">Friday, August 28th, at 11:59pm US-Western (UTC-7)</span>. Sign up via the <a href="https://discord.gg/tytRDaRVsA">Bingo Tournament Discord</a>.</li>
-            <li><strong>Timeline:</strong> The tournament officially starts on <strong>Sunday, August 30th</strong>. Pairings for the first round may be determined after signup closes but before this date.</li>
-            <li><strong>Game Version:</strong> Played on the latest version of <a href="https://ootbingo.github.io/bingo/bingo.html">Ocarina of Time Bingo</a> (currently <span class="highlight">v10.6</span>). The version may be updated between rounds, but never while a round is actively in progress.</li>
+            <li><strong>Tournament Start:</strong> The tournament officially starts on <strong>Sunday, August 30th</strong>. Pairings for the first round may be determined after signup closes but before this date.</li>
+            <li><strong>Bingo Version:</strong> Played on the latest version of <a href="https://ootbingo.github.io/bingo/bingo.html">Ocarina of Time Bingo</a> (currently <span class="highlight">v10.6</span>). The version may be updated between rounds, but never while a round is actively in progress.</li>
             <li><strong>Structure:</strong> Consists of 2 phases: a 3-week Groups phase followed by a 4-5 week single-elimination bracket. Seeding races take place during the final week of signups.</li>
             <li><strong>Attendance:</strong> Entrants must plan to be available for one match per week. Not all entrants will qualify for the single-elimination bracket phase.</li>
             <li><strong>Requirements to Join:</strong> 
@@ -422,7 +434,7 @@
 
         <div class="faq-item">
             <div class="faq-question">Who can join this tournament?</div>
-            <p class="faq-answer">Anyone who has completed at least 1 OoT Bingo race on Racetime (ever) before signup closes can join. You will need to be available for 1 match a week, starting in the last week of August for 3 weeks. The top 16/24 bracket stage will last 4-5 weeks after this.</p>
+            <p class="faq-answer">Anyone who has completed at least 1 OoT Bingo race on Racetime (ever) before signup closes can join. You will need to be available for 1 match a week, starting in the last week of August for 3 weeks. The top 16/24 single elimination bracket will last 4-5 weeks after this.</p>
         </div>
 
         <div class="faq-item">
@@ -432,7 +444,7 @@
 
         <div class="faq-item">
             <div class="faq-question">Can I ask for help during tournament matches?</div>
-            <p class="faq-answer">During the <strong>Groups stage only</strong>, you can ask for help through the <code>#bingo-help</code> channel of the tournament Discord. Check the specific section in the <strong>Rules & Format</strong> tab on providing help for more details on exactly what types of questions are allowed.</p>
+            <p class="faq-answer">During the <strong>Groups phase only</strong>, you can ask for help through the <code>#bingo-help</code> channel of the tournament Discord. Check the specific section in the <strong>Rules & Format</strong> tab on providing help for more details on exactly what types of questions are allowed.</p>
         </div>
 
         <div class="faq-item">
