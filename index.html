@@ -162,6 +162,7 @@
         <button class="tab-btn" onclick="openTab(event, 'rules')">Rules & Format</button>
         <button class="tab-btn" onclick="openTab(event, 'groups-phase')">Groups Phase</button>
         <button class="tab-btn" onclick="openTab(event, 'standings')">Upcoming Matches & More</button>
+        <button class="tab-btn" onclick="openTab(event, 'faq')">FAQ</button>
     </div>
 
     <div id="standings" class="tab-content">
@@ -381,6 +382,45 @@
         <li><strong>Double DNFs:</strong> If both active racers in a match DNF, the player who physically DNF'd first receives the match loss. The player who DNF'd second receives the match win. Both racers receive a <code>4:00:00</code> time penalty applied to their tracking metrics.</li>
         <li><strong>Legitimate Match Restarts:</strong> If an explicit restart is triggered under the rules (e.g., BingoBot error or unforeseen system crash), both players should instantly DNF inside the Racetime room to reset. This administrative cleanup step will <strong>not</strong> count as a DNF toward tournament metrics.</li>
     </ul>
+</div>
+
+<div id="faq" class="tab-content">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+        <div class="faq-question">Who can join this tournament?</div>
+        <p class="faq-answer">This tournament is open to anyone! All entrants must complete at least 1 race on Racetime before signup closes. You will need to be available for 1 match a week, starting in the last week of August for 3 weeks. The top 16/24 bracket stage will last 4-5 weeks after this.</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">I'll be unavailable for a week and have to miss a match. Is that okay?</div>
+        <p class="faq-answer">Your Groups Ranking will be the median of 3 times. So, if you skip 1, your median will be the lower of the remaining 2 times. This means it is possible to miss a week, but you <strong>must let the Tournament Organizers know ahead of time</strong> so we can plan the week's pairings accordingly.</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Can I ask for help during tournament matches?</div>
+        <p class="faq-answer">During the <strong>Groups stage only</strong>, you can ask for help through the <code>#bingo-help</code> channel of the tournament Discord. Check the specific section in the <strong>Rules & Format</strong> tab on providing help for more details on exactly what types of questions are allowed.</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Are there practice races?</div>
+        <p class="faq-answer">Yes! Typically players ping the <code>@bingo</code> role in the OoT Speedrunning Discord within the <code>#races</code> channel to find casual matches. There are also 2 weekly scheduled community races on Saturdays (look out for <code>@bingo</code> pings for ESNB/SNB).</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">I don't have a console to play OoT. Can I use an emulator?</div>
+        <p class="faq-answer">Yes, and emulators are often a quicker and easier way to get started! Certain emulators are allowed (Dolphin and Project64 v1.6/1.7/3.0) but must use the configurations from OoT's Speedrun.com rules. The Ocarina of Time speedrunning Discord can also help with general setup.</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Bingo seems too hard for me. Should I still join?</div>
+        <p class="faq-answer">Bingo is hard, but it gets easier every single time! It's completely normal to feel overwhelmed and have no idea what to do or what each goal means at first. A great recommendation is to learn a small number of baseline tricks which you'll need every time and will save massive amounts of time (<em>Forest Escape, Door of Time skip, a little bit of Reverse Bottle Adventure, and Early Shadow & Spirit Temple</em>), and to focus on finding just one doable row on a test board. Over time you'll naturally learn more goals and more rows will open up. You can do it!</p>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">How can I learn Bingo?</div>
+        <p class="faq-answer">There are many excellent resources out there to learn, ranging from foundational guides to advanced routing. Join the <a href="https://discord.gg/ZPGEqGpGfD">BingBros Discord</a> to view the community resource lists (these are also in the <code>#tutorials</code> channel in the Tournament Discord). If you want one video to start, check out the <a href="https://www.youtube.com/watch?v=gs1RcPhAO5A">Top 5 Essential Tricks</a>. Don't be afraid to ask questions—everyone is happy to help!</p>
+    </div>
 </div>
 
 <script>
