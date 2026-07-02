@@ -104,6 +104,49 @@
             color: #ffcc00; /* Turns gold on hover to match your theme */
             text-decoration: underline; /* Adds the underline back on hover for clarity */
         }
+        /* TL;DR Quick summary block */
+        .tldr-box {
+            background-color: #2a2200;
+            border-left: 4px solid #ffcc00;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+        .tldr-box h3 {
+            margin-top: 0;
+            color: #ffcc00;
+        }
+
+        /* Custom Legend Matrix Table from Screenshot 2026-07-02 at 2.19.34 PM.png */
+        .legend-table {
+            width: 100%;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .legend-table td {
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bold;
+            color: #121212; /* Dark text for high contrast on the colored cells */
+            padding: 15px 10px;
+        }
+        .legend-table .label-cell {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            width: 15%;
+        }
+        .legend-table .info-text {
+            background-color: transparent;
+            color: #aaa;
+            font-weight: normal;
+            font-style: italic;
+            padding: 8px;
+        }
+        /* Matrix Colors adjusted for dark mode readability */
+        .bg-cyan { background-color: #00e5ff; }
+        .bg-green { background-color: #00e676; }
+        .bg-orange { background-color: #ff9100; }
+        .bg-red { background-color: #ff1744; }
     </style>
 </head>
 <body>
@@ -117,6 +160,7 @@
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab(event, 'schedule')">Timeline</button>
         <button class="tab-btn" onclick="openTab(event, 'rules')">Rules & Format</button>
+        <button class="tab-btn" onclick="openTab(event, 'groups-phase')">Groups Phase</button>
         <button class="tab-btn" onclick="openTab(event, 'standings')">Upcoming Matches & More</button>
     </div>
 
@@ -267,6 +311,76 @@
             <li><strong>Rematch Prevention:</strong> To avoid direct rematches from the groups phase in Round 1 of the bracket, the tournament coordinators will swap the lower-seeded player with the next closest seed.</li>
         </ul>
     </div>
+</div>
+
+<!-- Groups Phase Tab -->
+<div id="groups-phase" class="tab-content">
+    <!-- TL;DR -->
+    <div class="tldr-box">
+        <h3>TL;DR</h3>
+        <p>Entrants will be ranked into groups of 8 each round. After each round, the top 2 winners move to the above group, and the bottom 2 losers move to the lower group. At the end, entrants are ranked by median time within groups. Don't worry too much about it—always good to win, but getting good times can be more important!</p>
+    </div>
+
+    <h3>What is this format?</h3>
+    <p>Rather than the typical 3 Swiss Rounds, this year's bracket qualifying phase features a <strong>"King of the Hill" (Promotion & Relegation)</strong> format. Entrants are broken into groups of 8, with each group divided into a top half and a lower half. The top half faces the lower half, and players dynamically move between groups each round depending on their specific match results and times.</p>
+    <p><em>The goal:</em> Encourage high-stakes matches between players of similar skill much sooner, producing a robust ranking similar to a Swiss or Round Robin bracket while spicing things up!</p>
+
+    <!-- Color Legend Grid Matrix -->
+    <h3>Round Outcomes & Group Movements</h3>
+    <p>The matrix below demonstrates exactly how players move at the end of a round based on their performance relative to their 8-player group (matching the system defined in <code>Screenshot 2026-07-02 at 2.19.34 PM.png</code>):</p>
+    
+    <table class="legend-table">
+        <tbody>
+            <tr>
+                <td class="info-text"></td>
+                <td colspan="2" class="info-text">Move to bottom half of ABOVE group</td>
+                <td colspan="2" class="info-text">Stay in top half of CURRENT group</td>
+            </tr>
+            <tr>
+                <td class="label-cell">4 Winners</td>
+                <td class="bg-cyan">Winner<br><small>Best Time</small></td>
+                <td class="bg-cyan">Winner<br><small>2nd Best</small></td>
+                <td class="bg-green">Winner<br><small>3rd Best</small></td>
+                <td class="bg-green">Winner<br><small>4th Best</small></td>
+            </tr>
+            <tr>
+                <td class="label-cell">4 Losers</td>
+                <td class="bg-orange">Loser<br><small>Best Time</small></td>
+                <td class="bg-orange">Loser<br><small>2nd Best</small></td>
+                <td class="bg-red">Loser<br><small>3rd Best</small></td>
+                <td class="bg-red">Loser<br><small>4th Best</small></td>
+            </tr>
+            <tr>
+                <td class="info-text"></td>
+                <td colspan="2" class="info-text">Stay in bottom half of CURRENT group</td>
+                <td colspan="2" class="info-text">Move to top half of BELOW group</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>How Matches Are Determined</h3>
+    <ul class="rules-list">
+        <li><strong>Round 1 Pairings:</strong> Initial groups and structural seeding are determined directly by the pre-tournament seeding race parameters. Within each group, pairings follow a traditional structure: <code>Rank 1 vs Rank 8</code>, <code>Rank 2 vs Rank 7</code>, <code>Rank 3 vs Rank 6</code>, and <code>Rank 4 vs Rank 5</code>.</li>
+        <li><strong>Subsequent Rounds:</strong> Within each group, the top half is ranked by their previous round time and faces the bottom half (also ranked by their previous round time).</li>
+    </ul>
+
+    <h3>Bracket Qualification Mechanics</h3>
+    <p>At the conclusion of 3 rounds, the final group tiers are locked. Entrants are ranked by their final group tier, and then by their median time across the matches to establish seeding for the single-elimination bracket:</p>
+    <ul class="rules-list">
+        <li><strong>If under 32 entrants:</strong> The top 12 players via this structural system (comprising the entire top group and the top half of the second group) secure seeds 1–12. The remaining tournament field competes for seeds 13–16 based on the top 4 remaining median times.</li>
+        <li><strong>If 32 or more entrants:</strong> The top 20 players (comprising the top 2 groups and the top half of the third group) lock seeds 1–20. The remaining field competes for seeds 21–24 based on the top 4 remaining median times.</li>
+    </ul>
+
+    <h3>Edge Cases & Technicalities</h3>
+    <ul class="rules-list">
+        <li><strong>Size Anomalies (Not Divisible by 8):</strong> If player counts do not cleanly divide by 8, the bottom group(s) will adapt to be smaller (retaining a minimum threshold of 4 players), applying the identical logic rules for structural promotion and relegation.</li>
+        <li><strong>Odd Player Counts (Byes):</strong> If an odd number of entrants occurs, the lowest tier group will scale to an odd size. Each round, the highest-ranked player in that specific group receives a bye. *Note: Players on a bye must still run a race to register a valid time sequence, and no player will receive a bye more than once.*</li>
+        <li><strong>Rematch Restrictions:</strong> Due to tight group dynamics, rematches can organically occur. If a clean, single-step swap resolves a rematch without shifting structural ranking integrity, organizers may execute it. Direct groups phase rematches will be explicitly prevented during Round 1 of the bracket.</li>
+        <li><strong>Handling Forfeits & DNFs:</strong> A forfeit or DNF translates to a fixed <code>4:00:00</code> time value. If more than two losers DNF in a single group, all DNF instances shift downward, and an equal number of qualifying winners from the group below will promote to fill the vacancies.</li>
+        <li><strong>DNF Tiebreakers:</strong> To properly rank players who DNF for the subsequent round's pairings, the player's overall tournament median up to that exact juncture is utilized. If still tied, the original Round 1 seeding is used as the baseline fallback. </li>
+        <li><strong>Double DNFs:</strong> If both active racers in a match DNF, the player who physically DNF'd first receives the match loss. The player who DNF'd second receives the match win. Both racers receive a <code>4:00:00</code> time penalty applied to their tracking metrics.</li>
+        <li><strong>Legitimate Match Restarts:</strong> If an explicit restart is triggered under the rules (e.g., BingoBot error or unforeseen system crash), both players should instantly DNF inside the Racetime room to reset. This administrative cleanup step will <strong>not</strong> count as a DNF toward tournament metrics.</li>
+    </ul>
 </div>
 
 <script>
