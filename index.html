@@ -68,6 +68,7 @@
         }
         /* Tables & Lists Formatting */
         table {
+            width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
         }
@@ -117,6 +118,7 @@
 
         /* Custom Legend Matrix Table */
         .legend-table {
+            width: 100%;
             margin: 20px 0;
             font-size: 14px;
             table-layout: fixed; /* 1. Forces the browser to strictly honor column widths */
@@ -329,119 +331,119 @@
             <li><strong>Rematch Prevention:</strong> To avoid direct rematches from the groups phase in Round 1 of the bracket, the tournament coordinators will swap the lower-seeded player with the next closest seed.</li>
         </ul>
     </div>
-</div>
 
-<!-- Groups Phase Tab -->
-<div id="groups-phase" class="tab-content">
-    <!-- TL;DR -->
-    <div class="tldr-box">
-        <h3>TL;DR</h3>
-        <p>Entrants will be ranked into groups of 8 each round. After each round, the top 2 winners move to the above group, and the bottom 2 losers move to the lower group. At the end, entrants are ranked by median time within groups. Don't worry too much about it—always good to win, but getting good times can be more important!</p>
+    <!-- Groups Phase Tab -->
+    <div id="groups-phase" class="tab-content">
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <h3>TL;DR</h3>
+            <p>Entrants will be ranked into groups of 8 each round. After each round, the top 2 winners move to the above group, and the bottom 2 losers move to the lower group. At the end, entrants are ranked by median time within groups. Don't worry too much about it—always good to win, but getting good times can be more important!</p>
+        </div>
+
+        <h3>What is this format?</h3>
+        <p>Rather than a Swiss Rounds format, this year's bracket qualifying phase features a <strong>"King of the Hill" (Promotion & Relegation)</strong> format. Entrants are broken into groups of 8, with each group divided into a top half and a lower half. The top half faces the lower half, and players dynamically move between groups each round depending on their specific match results and times.</p>
+        <p><em>The goal:</em> Have exciting matches between players of similar skill much sooner, ultimately producing a similar ranking to a Swiss or Round Robin format for the single elimination bracket.</p>
+
+        <!-- Color Legend Grid Matrix -->
+        <h3>Round Outcomes & Group Movements</h3>
+        <p>The table below demonstrates exactly how players move at the end of a round based on their performance relative to their 8-player group:</p>
+        
+        <table class="legend-table">
+            <tbody>
+                <tr>
+                    <td class="info-text"></td>
+                    <td colspan="2" class="info-text">Move to bottom half of ABOVE group</td>
+                    <td colspan="2" class="info-text">Stay in top half of CURRENT group</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">4 Winners</td>
+                    <td class="bg-cyan">Winner<br><small>Best Time</small></td>
+                    <td class="bg-cyan">Winner<br><small>2nd Best</small></td>
+                    <td class="bg-green">Winner<br><small>3rd Best</small></td>
+                    <td class="bg-green">Winner<br><small>4th Best</small></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">4 Losers</td>
+                    <td class="bg-orange">Loser<br><small>Best Time</small></td>
+                    <td class="bg-orange">Loser<br><small>2nd Best</small></td>
+                    <td class="bg-red">Loser<br><small>3rd Best</small></td>
+                    <td class="bg-red">Loser<br><small>4th Best</small></td>
+                </tr>
+                <tr>
+                    <td class="info-text"></td>
+                    <td colspan="2" class="info-text">Stay in bottom half of CURRENT group</td>
+                    <td colspan="2" class="info-text">Move to top half of BELOW group</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>How Matches Are Determined</h3>
+        <ul class="rules-list">
+            <li><strong>Round 1 Pairings:</strong> Initial groups and seeds are determined directly by the pre-tournament seeding races. Within each group, pairings follow a traditional structure: <code>Rank 1 vs Rank 8</code>, <code>Rank 2 vs Rank 7</code>, <code>Rank 3 vs Rank 6</code>, and <code>Rank 4 vs Rank 5</code>.</li>
+            <li><strong>Subsequent Rounds:</strong> Within each group, the top half is ranked by their previous round time and faces the bottom half (also ranked by their previous round time).</li>
+        </ul>
+
+        <h3>Bracket Qualification Mechanics</h3>
+        <p>At the conclusion of 3 rounds, the final groups are determined. Entrants are ranked by their final group, and then by their median time across the matches to determine seeding for the single-elimination bracket:</p>
+        <ul class="rules-list">
+            <li><strong>If under 32 entrants:</strong> The top 12 players (from the entire top group and the top half of the second group) are seeds 1–12. The top 4 remaining median times are seeds 13-16.</li>
+            <li><strong>If 32 or more entrants:</strong> The top 20 players (comprising the top 2 groups and the top half of the third group) are seeds 1–20. The top 4 remaining median times are seeds 21-24.</li>
+        </ul>
+
+        <h3>Edge Cases & Technicalities</h3>
+        <ul class="rules-list">
+            <li><strong>Size Anomalies (Not Divisible by 8):</strong> If the number of entrants is not divisible by 8, the bottom group(s) will adapt to be smaller (retaining a minimum threshold of 4 players), applying similar rules for promotion and relegation (top and bottom halves but with fewer players).</li>
+            <li><strong>Odd Player Counts (Byes):</strong> If there are an odd number of entrants, the lowest group will have an odd number. Each round, the highest-ranked player in that specific group receives a bye. <i>Note: Players on a bye must still run a race to have a time for that round, and no player will receive a bye more than once.</i></li>
+            <li><strong>Rematch Restrictions:</strong> Due to the setup, rematches can occur. Groups phase rematches will be explicitly prevented during Round 1 of the bracket.</li>
+            <li><strong>Handling Forfeits & DNFs:</strong> A forfeit or DNF translates to a fixed <code>4:00:00</code> time value. If more than two losers DNF in a single group, all DNF instances shift downward, and an equal number of qualifying winners from the group below will promote to fill the vacancies.</li>
+            <li><strong>DNF Tiebreakers:</strong> To properly rank players who DNF for the subsequent round's pairings, the player's overall tournament median up to that exact juncture is utilized. If still tied, the original Round 1 seeding is used as the baseline fallback. </li>
+            <li><strong>Double DNFs:</strong> If both active racers in a match DNF, the player who physically DNF'd first receives the match loss. The player who DNF'd second receives the match win. Both racers receive a <code>4:00:00</code> time penalty applied to their tracking metrics.</li>
+            <li><strong>Legitimate Match Restarts:</strong> If an explicit restart is triggered under the rules (e.g., BingoBot error or agreed upon restart due to console crash), both players should DNF inside the Racetime room and create a new room. This will <strong>not</strong> count as a DNF toward the tournament median.</li>
+        </ul>
     </div>
 
-    <h3>What is this format?</h3>
-    <p>Rather than a Swiss Rounds format, this year's bracket qualifying phase features a <strong>"King of the Hill" (Promotion & Relegation)</strong> format. Entrants are broken into groups of 8, with each group divided into a top half and a lower half. The top half faces the lower half, and players dynamically move between groups each round depending on their specific match results and times.</p>
-    <p><em>The goal:</em> Have exciting matches between players of similar skill much sooner, ultimately producing a similar ranking to a Swiss or Round Robin format for the single elimination bracket.</p>
+    <div id="faq" class="tab-content">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">How do I sign up?</div>
+            <p class="faq-answer">Sign up by reacting to an announcement post in the <a href="https://discord.gg/tytRDaRVsA">Bingo Tournament Discord</a>, before <span class="highlight">August 28th at 11:59PM US-Western (UTC-7)</span>.</p>
+        </div>
 
-    <!-- Color Legend Grid Matrix -->
-    <h3>Round Outcomes & Group Movements</h3>
-    <p>The table below demonstrates exactly how players move at the end of a round based on their performance relative to their 8-player group:</p>
-    
-    <table class="legend-table">
-        <tbody>
-            <tr>
-                <td class="info-text"></td>
-                <td colspan="2" class="info-text">Move to bottom half of ABOVE group</td>
-                <td colspan="2" class="info-text">Stay in top half of CURRENT group</td>
-            </tr>
-            <tr>
-                <td class="label-cell">4 Winners</td>
-                <td class="bg-cyan">Winner<br><small>Best Time</small></td>
-                <td class="bg-cyan">Winner<br><small>2nd Best</small></td>
-                <td class="bg-green">Winner<br><small>3rd Best</small></td>
-                <td class="bg-green">Winner<br><small>4th Best</small></td>
-            </tr>
-            <tr>
-                <td class="label-cell">4 Losers</td>
-                <td class="bg-orange">Loser<br><small>Best Time</small></td>
-                <td class="bg-orange">Loser<br><small>2nd Best</small></td>
-                <td class="bg-red">Loser<br><small>3rd Best</small></td>
-                <td class="bg-red">Loser<br><small>4th Best</small></td>
-            </tr>
-            <tr>
-                <td class="info-text"></td>
-                <td colspan="2" class="info-text">Stay in bottom half of CURRENT group</td>
-                <td colspan="2" class="info-text">Move to top half of BELOW group</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="faq-item">
+            <div class="faq-question">Who can join this tournament?</div>
+            <p class="faq-answer">This tournament is open to anyone! All entrants must complete at least 1 race on Racetime before signup closes. You will need to be available for 1 match a week, starting in the last week of August for 3 weeks. The top 16/24 bracket stage will last 4-5 weeks after this.</p>
+        </div>
 
-    <h3>How Matches Are Determined</h3>
-    <ul class="rules-list">
-        <li><strong>Round 1 Pairings:</strong> Initial groups and seeds are determined directly by the pre-tournament seeding races. Within each group, pairings follow a traditional structure: <code>Rank 1 vs Rank 8</code>, <code>Rank 2 vs Rank 7</code>, <code>Rank 3 vs Rank 6</code>, and <code>Rank 4 vs Rank 5</code>.</li>
-        <li><strong>Subsequent Rounds:</strong> Within each group, the top half is ranked by their previous round time and faces the bottom half (also ranked by their previous round time).</li>
-    </ul>
+        <div class="faq-item">
+            <div class="faq-question">I'll be unavailable for a week and have to miss a match. Is that okay?</div>
+            <p class="faq-answer">Your Groups Ranking will be the median of 3 times. So, if you skip 1, your median will be the lower of the remaining 2 times. This means it is possible to miss a week, but you <strong>must let the Tournament Organizers know ahead of time</strong> so we can plan the week's pairings accordingly.</p>
+        </div>
 
-    <h3>Bracket Qualification Mechanics</h3>
-    <p>At the conclusion of 3 rounds, the final groups are determined. Entrants are ranked by their final group, and then by their median time across the matches to determine seeding for the single-elimination bracket:</p>
-    <ul class="rules-list">
-        <li><strong>If under 32 entrants:</strong> The top 12 players (from the entire top group and the top half of the second group) are seeds 1–12. The top 4 remaining median times are seeds 13-16.</li>
-        <li><strong>If 32 or more entrants:</strong> The top 20 players (comprising the top 2 groups and the top half of the third group) are seeds 1–20. The top 4 remaining median times are seeds 21-24.</li>
-    </ul>
+        <div class="faq-item">
+            <div class="faq-question">Can I ask for help during tournament matches?</div>
+            <p class="faq-answer">During the <strong>Groups stage only</strong>, you can ask for help through the <code>#bingo-help</code> channel of the tournament Discord. Check the specific section in the <strong>Rules & Format</strong> tab on providing help for more details on exactly what types of questions are allowed.</p>
+        </div>
 
-    <h3>Edge Cases & Technicalities</h3>
-    <ul class="rules-list">
-        <li><strong>Size Anomalies (Not Divisible by 8):</strong> If the number of entrants is not divisible by 8, the bottom group(s) will adapt to be smaller (retaining a minimum threshold of 4 players), applying similar rules for promotion and relegation (top and bottom halves but with fewer players).</li>
-        <li><strong>Odd Player Counts (Byes):</strong> If there are an odd number of entrants, the lowest group will have an odd number. Each round, the highest-ranked player in that specific group receives a bye. <i>Note: Players on a bye must still run a race to have a time for that round, and no player will receive a bye more than once.</i></li>
-        <li><strong>Rematch Restrictions:</strong> Due to the setup, rematches can occur. Groups phase rematches will be explicitly prevented during Round 1 of the bracket.</li>
-        <li><strong>Handling Forfeits & DNFs:</strong> A forfeit or DNF translates to a fixed <code>4:00:00</code> time value. If more than two losers DNF in a single group, all DNF instances shift downward, and an equal number of qualifying winners from the group below will promote to fill the vacancies.</li>
-        <li><strong>DNF Tiebreakers:</strong> To properly rank players who DNF for the subsequent round's pairings, the player's overall tournament median up to that exact juncture is utilized. If still tied, the original Round 1 seeding is used as the baseline fallback. </li>
-        <li><strong>Double DNFs:</strong> If both active racers in a match DNF, the player who physically DNF'd first receives the match loss. The player who DNF'd second receives the match win. Both racers receive a <code>4:00:00</code> time penalty applied to their tracking metrics.</li>
-        <li><strong>Legitimate Match Restarts:</strong> If an explicit restart is triggered under the rules (e.g., BingoBot error or agreed upon restart due to console crash), both players should DNF inside the Racetime room and create a new room. This will <strong>not</strong> count as a DNF toward the tournament median.</li>
-    </ul>
-</div>
+        <div class="faq-item">
+            <div class="faq-question">Are there practice races?</div>
+            <p class="faq-answer">Yes! Typically players ping the <code>@bingo</code> role in the OoT Speedrunning Discord within the <code>#races</code> channel to find casual matches. There are also 2 weekly scheduled community races on Saturdays (look out for <code>@bingo</code> pings for ESNB/SNB).</p>
+        </div>
 
-<div id="faq" class="tab-content">
-    <h2>Frequently Asked Questions</h2>
-    
-    <div class="faq-item">
-        <div class="faq-question">How do I sign up?</div>
-        <p class="faq-answer">Sign up by reacting to an announcement post in the <a href="https://discord.gg/tytRDaRVsA">Bingo Tournament Discord</a>, before <span class="highlight">August 28th at 11:59PM US-Western (UTC-7)</span>.</p>
-    </div>
+        <div class="faq-item">
+            <div class="faq-question">I don't have a console to play OoT. Can I use an emulator?</div>
+            <p class="faq-answer">Yes, and emulators are often a quicker and easier way to get started! Certain emulators are allowed (Dolphin and Project64 v1.6/1.7/3.0) but must use the configurations from OoT's Speedrun.com rules. The Ocarina of Time speedrunning Discord can also help with general setup.</p>
+        </div>
 
-    <div class="faq-item">
-        <div class="faq-question">Who can join this tournament?</div>
-        <p class="faq-answer">This tournament is open to anyone! All entrants must complete at least 1 race on Racetime before signup closes. You will need to be available for 1 match a week, starting in the last week of August for 3 weeks. The top 16/24 bracket stage will last 4-5 weeks after this.</p>
-    </div>
+        <div class="faq-item">
+            <div class="faq-question">Bingo seems too hard for me. Should I still join?</div>
+            <p class="faq-answer">Bingo is hard, but it gets easier every single time! It's completely normal to feel overwhelmed and have no idea what to do or what each goal means at first. A great recommendation is to learn a small number of baseline tricks which you'll need every time and will save massive amounts of time (<em>Forest Escape, Door of Time skip, a little bit of Reverse Bottle Adventure, and Early Shadow & Spirit Temple</em>), and to focus on finding just one doable row on a test board. Over time you'll naturally learn more goals and more rows will open up. You can do it!</p>
+        </div>
 
-    <div class="faq-item">
-        <div class="faq-question">I'll be unavailable for a week and have to miss a match. Is that okay?</div>
-        <p class="faq-answer">Your Groups Ranking will be the median of 3 times. So, if you skip 1, your median will be the lower of the remaining 2 times. This means it is possible to miss a week, but you <strong>must let the Tournament Organizers know ahead of time</strong> so we can plan the week's pairings accordingly.</p>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Can I ask for help during tournament matches?</div>
-        <p class="faq-answer">During the <strong>Groups stage only</strong>, you can ask for help through the <code>#bingo-help</code> channel of the tournament Discord. Check the specific section in the <strong>Rules & Format</strong> tab on providing help for more details on exactly what types of questions are allowed.</p>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Are there practice races?</div>
-        <p class="faq-answer">Yes! Typically players ping the <code>@bingo</code> role in the OoT Speedrunning Discord within the <code>#races</code> channel to find casual matches. There are also 2 weekly scheduled community races on Saturdays (look out for <code>@bingo</code> pings for ESNB/SNB).</p>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">I don't have a console to play OoT. Can I use an emulator?</div>
-        <p class="faq-answer">Yes, and emulators are often a quicker and easier way to get started! Certain emulators are allowed (Dolphin and Project64 v1.6/1.7/3.0) but must use the configurations from OoT's Speedrun.com rules. The Ocarina of Time speedrunning Discord can also help with general setup.</p>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Bingo seems too hard for me. Should I still join?</div>
-        <p class="faq-answer">Bingo is hard, but it gets easier every single time! It's completely normal to feel overwhelmed and have no idea what to do or what each goal means at first. A great recommendation is to learn a small number of baseline tricks which you'll need every time and will save massive amounts of time (<em>Forest Escape, Door of Time skip, a little bit of Reverse Bottle Adventure, and Early Shadow & Spirit Temple</em>), and to focus on finding just one doable row on a test board. Over time you'll naturally learn more goals and more rows will open up. You can do it!</p>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">How can I learn Bingo?</div>
-        <p class="faq-answer">There are many excellent resources out there to learn, ranging from foundational guides to advanced routing. Join the <a href="https://discord.gg/ZPGEqGpGfD">BingBros Discord</a> to view the community resource lists (these are also in the <code>#tutorials</code> channel in the Tournament Discord). If you want one video to start, check out the <a href="https://www.youtube.com/watch?v=gs1RcPhAO5A">Top 5 Essential Tricks</a>. Don't be afraid to ask questions—everyone is happy to help!</p>
+        <div class="faq-item">
+            <div class="faq-question">How can I learn Bingo?</div>
+            <p class="faq-answer">There are many excellent resources out there to learn, ranging from foundational guides to advanced routing. Join the <a href="https://discord.gg/ZPGEqGpGfD">BingBros Discord</a> to view the community resource lists (these are also in the <code>#tutorials</code> channel in the Tournament Discord). If you want one video to start, check out the <a href="https://www.youtube.com/watch?v=gs1RcPhAO5A">Top 5 Essential Tricks</a>. Don't be afraid to ask questions—everyone is happy to help!</p>
+        </div>
     </div>
 </div>
 
