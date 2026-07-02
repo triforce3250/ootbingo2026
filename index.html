@@ -104,7 +104,14 @@
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab(event, 'schedule')">Schedule</button>
         <button class="tab-btn" onclick="openTab(event, 'rules')">Rules & Format</button>
-        <button class="tab-btn" onclick="event.preventDefault(); window.open('https://docs.google.com/spreadsheets/d/1a4wYnlA4F_gAbj4pmLRcTBeBVMopl6RH_E0kjNYxSUg/edit?gid=2071398921#gid=2071398921', '_blank')">Standings ↗</button>
+        <button class="tab-btn" onclick="openTab(event, 'standings')">Standings</button>
+    </div>
+
+    <div id="standings" class="tab-content">
+        <h2>Tournament Standings</h2>
+        <div class="responsive-iframe-container">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpI6Yg2uHM9yzzhoAn3nndVNtqYkfeaZO0gK5_dFCX4ujb9jY_ixVpS3LnnGIJUgWaugOD9sCL6JhN/pubhtml??widget=true&amp;headers=false" style="width: 100%; height: 600px; border: none;"></iframe>
+        </div>
     </div>
 
     <!-- Schedule Tab -->
@@ -138,13 +145,106 @@
         </table>
     </div>
 
-    <!-- RULES TAB -->
+    <!-- Rules Tab -->
     <div id="rules" class="tab-content">
-        <h2>General Information</h2>
+        <h2>Tournament Rules & Format</h2>
+        <p><em>Unless there is a serious oversight or issue, no changes to the information or rules below will be made after signup closes.</em></p>
+        
+        <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
+
+        <!-- Section 1 -->
+        <h3>General Information</h3>
         <ul class="rules-list">
-            <li>Sign up will be open until <b>Saturday, August 29th, at 11:59pm US-Western (UTC-7)</b>. Sign up through the Bingo Tournament Discord.</li>
-            <li>The tournament will officially start on Sunday, August 30th. The tournament consists of 2 phases: a Groups phase lasting 3 weeks followed by a single-elimination bracket phase lasting 4-5 weeks. In the weeks before the tournament start, there will be seeding races used to determine the first round of the groups phase.</li>
-            <li>Entrants should plan on being available for one match a week. Not all entrants will qualify for the single-elimination bracket phase.</li>
+            <li><strong>Sign-up Deadline:</strong> Closes on <span class="highlight">Saturday, August 29th, at 11:59pm US-Western (UTC-7)</span>. Sign up via the Bingo Tournament Discord.</li>
+            <li><strong>Timeline:</strong> The tournament officially starts on <strong>Sunday, August 30th</strong>. Pairings for the first round may be determined after signup closes but before this date.</li>
+            <li><strong>Game Version:</strong> Played on the latest version of Ocarina of Time Bingo (currently <span class="highlight">v10.6</span>). The version may be updated between rounds, but never while a round is actively in progress.</li>
+            <li><strong>Structure:</strong> Consists of 2 phases: a 3-week Groups phase followed by a 4-5 week single-elimination bracket. Seeding races take place during the final week of signups.</li>
+            <li><strong>Attendance:</strong> Entrants must plan to be available for one match per week. Not all entrants will qualify for the single-elimination bracket phase.</li>
+            <li><strong>Requirements to Join:</strong> 
+                <ul>
+                    <li>A Racetime.gg account with at least 1 completed race in the OoT Bingo category (at any time ever). *You may sign up before fulfilling this, but must finish a race before signups close (e.g., via ESNB/SNB).*</li>
+                    <li>The ability to stream your gameplay livestreamed on Twitch or a similar platform.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Section 2 -->
+        <h3>General Match Rules</h3>
+        <ul class="rules-list">
+            <li><strong>Game Versions & Emulators:</strong> Allowed on any officially released version of the game (typically Japanese for faster text; iQue is excluded). Emulators are allowed (Dolphin [recommended] or Project64 v1.6/1.7) but must use the configurations from the OoT Speedrun.com rules.</li>
+            <li><strong>Banned Tricks:</strong> See the sidebar of any Bingo card to view rules on goal specifications and banned major version-specific tricks (such as SRM, GIM, or Stick/QPA as Adult).</li>
+            <li><strong>Race Rooms & Reporting:</strong> All matches must be played on Racetime.gg in a separate, 2-entrant race room. They must be announced in the tournament Discord's `#race-announcements` channel right before starting.</li>
+            <li><strong>Scheduling Courtesy:</strong> If possible, players are encouraged to avoid overlapping their matches with other scheduled tournament races or the weekly Saturday races.</li>
+            <li><strong>Restreams & Spoilers:</strong> Matches may be restreamed on the OoTV Twitch channel. Entrants **may not** watch the restream or read the `#race-spoilers` channel while racing. Watching your direct opponent's stream is allowed.</li>
+            <li><strong>Match Restarts:</strong> Allowed only if:
+                <ol>
+                    <li>BingoBot fails to generate a board when the race starts (restart in a new room).</li>
+                    <li>An entrant's game crashes due to external factors (excluding intentional softlocks), and *both* entrants agree to restart. No player is obligated to accept a restart.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <!-- Section 3 -->
+        <h3>Providing Help & Goal Validation</h3>
+        <ul class="rules-list">
+            <li><strong>Discord Help Channel:</strong> <span class="highlight">Groups phase ONLY</span>. Entrants may ask goal-oriented questions in `#bingo-help` during a race. 
+                <ul>
+                    <li><em>Allowed:</em> "Does X goal require ZL?", "Is there a trap for X goal?", "Can someone link a setup for X trick?"</li>
+                    <li><em>Banned:</em> "Which row should I pick?", "Should I go back in time?", "Can someone check what I am doing wrong?"</li>
+                </ul>
+            </li>
+            <li><strong>Unsolicited Help:</strong> It is strictly prohibited to provide unsolicited help to racing players. Please do not answer questions in an entrant's Twitch chat to prevent giving an unfair advantage.</li>
+            <li><strong>Goal Errors:</strong> If an entrant misses a requirement for a goal (e.g., forgetting or deleting an item), mention it in the Racetime room <strong>AFTER</strong> they finish. You may only state *which* goal was incomplete, not what they missed. Validation can be undone via Racetime for up to 10 minutes post-race.</li>
+        </ul>
+
+        <!-- Section 4 -->
+        <h3>Handling Ties & Retiming</h3>
+        <ul class="rules-list">
+            <li><strong>Popout Window Capture:</strong> Players should attempt to capture the Racetime room popout window (specifically the timer) to align the race start with stream VOD footage.</li>
+            <li><strong>Draws:</strong> In the rare event of a literal tie down to the second, VODs will be compared. If only one player captured the popout window, they are declared the winner. If neither did, the match must be replayed. In the Groups phase, both match times are used for Swiss round calculations.</li>
+            <li><strong>Lag & Retiming:</strong> If a race finish is within 10 seconds and players experience lag or an unclear finish moment, TOs may retime the match. This requires players to have had the Racetime timer visible on screen at the start of the race.</li>
+        </ul>
+
+        <!-- Section 5 -->
+        <h3>Seeding Races (Groups Round 1 Ranking)</h3>
+        <ul class="rules-list">
+            <li>There will be <strong>7 seeding races</strong> held during the final week of signups.</li>
+            <li>Your placement ranking for Groups Round 1 will be taken from the <strong>best of your first 2 seeding races OR your Bingo Leaderboard time</strong> as of Saturday, August 29th.</li>
+            <li><strong>Seeding Schedule:</strong>
+                <ul>
+                    <li>4 races are integrated with ESNB (20:00 UTC / 4PM Eastern) and SNB (03:30 UTC / 9:30PM Eastern) on <strong>August 15th and August 22nd</strong>.</li>
+                    <li>The remaining 3 races (subject to minor changes based on availability) will run on:
+                        <ul>
+                            <li>Tuesday, August 18th @ 5PM UTC (1PM Eastern)</li>
+                            <li>Thursday, August 20th @ 1PM UTC (9AM Eastern)</li>
+                            <li>Friday, August 21st @ 11PM UTC (7PM Eastern)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Section 6 -->
+        <h3>Groups Phase: King of the Hill Format</h3>
+        <ul class="rules-list">
+            <li>The Groups phase consists of <strong>3 rounds</strong>. Each round lasts exactly one week and must be finished by <strong>Monday at 8PM UTC</strong>. </li>
+            <li>If all matches in a round finish early, pairings for the next round may be generated early so players can begin scheduling.</li>
+            <li><strong>Finalizing Standings:</strong> After Round 3, ranked groups of up to 8 players are finalized. The median time within those groups determines final tournament ranking.</li>
+            <li><strong>Bracket Qualification Rules:</strong>
+                <ul>
+                    <li><strong>Fewer than 32 entrants:</strong> Top 12 players (the top group + top half of the second group) get seeds 1–12. The remaining players compete via the top 4 median times for seeds 13–16.</li>
+                    <li><strong>32 or more entrants:</strong> Top 20 players (the top 2 groups + top half of the third group) get seeds 1–20. The remaining players compete via the top 4 median times for seeds 21–24.</li>
+                </ul>
+            </li>
+            <li><strong>Deadlines & Forfeits:</strong> Unfinished matches past the weekly deadline will be evaluated on a case-by-case basis by tournament organizers. A forfeit or any completed time greater than 4 hours will automatically count as a <span class="highlight">4:00:00</span> time.</li>
+        </ul>
+
+        <!-- Section 7 -->
+        <h3>Bracket Phase: Single-Elimination</h3>
+        <ul class="rules-list">
+            <li>The final phase is a single-elimination bracket where every match is a <strong>Best of 1</strong>.</li>
+            <li><strong>Pairings:</strong> Seeding is directly pulled from the Groups phase ranking. Highest seed plays lowest seed ($1 \text{ vs } 16$, $2 \text{ vs } 15$, etc.).</li>
+            <li><strong>Rematch Prevention:</strong> To avoid direct rematches from the groups phase in Round 1 of the bracket, the tournament coordinators will swap the lower-seeded player with the next closest seed.</li>
         </ul>
     </div>
 </div>
