@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OoT Bingo Tournament 2026</title>
+    <style>
+        /* Simple, dark Zelda-esque theme inspired by classic community sites */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #ffcc00;
+            margin: 0 0 10px 0;
+        }
+        .subtitle {
+            color: #aaa;
+            font-style: italic;
+        }
+        /* Simple CSS Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #444;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            color: #ffcc00;
+        }
+        .tab-btn.active {
+            color: #ffcc00;
+            border-bottom: 3px solid #ffcc00;
+        }
+        .tab-content {
+            display: none;
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Tables & Lists Formatting */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2a2a2a;
+            color: #ffcc00;
+        }
+        tr:hover {
+            background-color: #252525;
+        }
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        .rules-list li {
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Ocarina of Time Bingo Tournament 2026</h1>
+        <p class="subtitle">The central hub for rules, schedules, and standings</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'schedule')">Schedule</button>
+        <button class="tab-btn" onclick="openTab(event, 'rules')">Rules & Format</button>
+        <button class="tab-btn" onclick="event.preventDefault(); window.open('https://docs.google.com/spreadsheets/d/1a4wYnlA4F_gAbj4pmLRcTBeBVMopl6RH_E0kjNYxSUg/edit?gid=2071398921#gid=2071398921', '_blank')">Standings ↗</button>
+    </div>
+
+    <!-- SCHEDULE TAB (Data sourced from bingo_tournament_2026_dates.jpg) -->
+    <div id="schedule" class="tab-content active">
+        <h2>Tournament Schedule</h2>
+        <p>Mark your calendars for the key phases of the 2026 tournament:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase</th>
+                    <th>Dates</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Seeding Races</td>
+                    <td>August 15th - 29th</td>
+                    <td>ESNB / SNB / Others. Best of first 2 times or Bingo Leaderboard time.</td>
+                </tr>
+                <tr>
+                    <td class="highlight">Group Phase</td>
+                    <td>August 30th - September 20th</td>
+                    <td>3 weeks long, exactly 1 match per week.</td>
+                </tr>
+                <tr>
+                    <td class="highlight">Single Elimination Bracket</td>
+                    <td>September 20th - October 18th/25th</td>
+                    <td>Top 16 (or Top 24 if we reach 40+ entrants).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- RULES TAB -->
+    <div id="rules" class="tab-content">
+        <h2>Rules & Format</h2>
+        <ul class="rules-list">
+            <li><strong>General Gameplay:</strong> All matches follow the standard Ocarina of Time Bingo ruleset unless a specific variant is specified for a round.</li>
+            <li><strong>Match Scheduling:</strong> Players are responsible for coordinating their weekly matches with opponents via Discord during the Group Phase.</li>
+            <li><strong>Result Reporting:</strong> Once a match concludes, please submit the final times and SRL/Racetime links to the tournament organizers or updating staff.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Simple tab switching logic
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
