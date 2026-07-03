@@ -336,15 +336,15 @@
         </ul>
 
         <!-- Section 6 -->
-        <h3>Groups Phase: King of the Hill Format</h3>
+        <h3>Groups Phase: King of the Hill / Promotion and Relegation Format</h3>
         <ul class="rules-list">
-            <li>The Groups phase consists of <strong>3 rounds</strong>. Each round lasts exactly one week and must be finished by <strong>Monday at 8PM UTC</strong>. </li>
+            <li>The Groups phase consists of <strong>3 rounds</strong>. Each round lasts exactly one week and must be finished by <strong>Monday at 6PM UTC</strong>. </li>
             <li>If all matches in a round finish early, pairings for the next round may be generated early so players can begin scheduling.</li>
-            <li><strong>Finalizing Standings:</strong> After Round 3, ranked groups of up to 8 players are finalized. The median time within those groups determines final tournament ranking.</li>
+            <li><strong>Finalizing Standings:</strong> After Round 3, ranked groups of up to 8 players are finalized. The median time within those groups determines the seeding for the top 16/24 single elimination bracket.</li>
             <li><strong>Bracket Qualification Rules:</strong>
                 <ul>
-                    <li><strong>Fewer than 32 entrants:</strong> Top 12 players (the top group + top half of the second group) get seeds 1–12. The remaining players compete via the top 4 median times for seeds 13–16.</li>
-                    <li><strong>32 or more entrants:</strong> Top 20 players (the top 2 groups + top half of the third group) get seeds 1–20. The remaining players compete via the top 4 median times for seeds 21–24.</li>
+                    <li><strong>Fewer than 32 entrants:</strong> Top 12 players (the top group + top half of the second group) get seeds 1–12. <span class="highlight"> (New!) From the remaining players with the top 4 median times, seeds 1-4 (in order) will choose their opponent in the Round of 16.</span></li>
+                    <li><strong>32 or more entrants:</strong> Top 20 players (the top 2 groups + top half of the third group) get seeds 1–20. <span class="highlight"> (New!) From the remaining players with the top 4 median times, seeds 9-12 (in order) will choose their opponent in the Round of 24 (seeds 1-8 will receive a bye).</span></li>
                 </ul>
             </li>
             <li><strong>Deadlines & Forfeits:</strong> Unfinished matches past the weekly deadline will be evaluated on a case-by-case basis by tournament organizers. A forfeit or any completed time greater than 4 hours will automatically count as a <span class="highlight">4:00:00</span> time.</li>
@@ -419,13 +419,13 @@
 
         <h3>Edge Cases & Technicalities</h3>
         <ul class="rules-list">
-            <li><strong>Size Anomalies (Not Divisible by 8):</strong> If the number of entrants is not divisible by 8, the bottom group(s) will adapt to be smaller (retaining a minimum threshold of 4 players), applying similar rules for promotion and relegation (top and bottom halves but with fewer players).</li>
-            <li><strong>Odd Player Counts (Byes):</strong> If there are an odd number of entrants, the lowest group will have an odd number. Each round, the highest-ranked player in that specific group receives a bye. <i>Note: Players on a bye must still run a race to have a time for that round, and no player will receive a bye more than once.</i></li>
+            <li><strong>Size Anomalies (Not Divisible by 8):</strong> If the number of entrants is not divisible by 8, the bottom group(s) will adapt to be smaller (while still having at least 4 entrants), applying similar rules for promotion and relegation (top and bottom halves but with fewer players).</li>
+            <li><strong>Odd Player Counts (Byes):</strong> If there are an odd number of entrants, the lowest group will have an odd number. Each round, the highest-ranked player in that group receives a bye. <i>Players on a bye must still run a race during that week (and announce it in <code>#race-announcements</code>) to have a time for that round. No player will receive a bye in the Groups phase more than once.</i></li>
             <li><strong>Rematch Restrictions:</strong> Due to the nature of the groups phase, rematches can occur. Groups phase rematches will be explicitly prevented during Round 1 of the bracket.</li>
-            <li><strong>Handling Forfeits & DNFs:</strong> A forfeit or DNF translates to a fixed <code>4:00:00</code> time value. If more than two losers DNF in a single group, all DNF instances shift downward, and an equal number of qualifying winners from the group below will promote to fill the vacancies.</li>
-            <li><strong>DNF Tiebreakers:</strong> To properly rank players who DNF for the subsequent round's pairings, the player's overall tournament median up to that exact juncture is utilized. If still tied, the original Round 1 seeding is used as the baseline fallback. </li>
-            <li><strong>Double DNFs:</strong> If both active racers in a match DNF, the player who physically DNF'd first receives the match loss. The player who DNF'd second receives the match win. Both racers receive a <code>4:00:00</code> time penalty applied to their tracking metrics.</li>
-            <li><strong>Legitimate Match Restarts:</strong> If an explicit restart is triggered under the rules (e.g., BingoBot error or agreed upon restart due to console crash), both players should DNF inside the Racetime room and create a new room. This will <strong>not</strong> count as a DNF toward the tournament median.</li>
+            <li><strong>Handling Forfeits & DNFs:</strong> A forfeit / DNF will be counted as a <code>4:00:00</code> time for the tournament median. If more than two entrants DNF in a single group, they will all move down to the lower group, and an equal number of qualifying winners from the group below will promote.</li>
+            <li><strong>DNF Tiebreakers:</strong> To properly rank players who DNF for the subsequent round's pairings, the player's overall tournament median up to that point will be used. If still tied, the original Round 1 seeding will be used. </li>
+            <li><strong>Double DNFs:</strong> If both active racers in a match DNF, the player who DNF'd first receives the match loss. The player who DNF'd second receives the match win. Both racers receive a <code>4:00:00</code> time for the round in this case.</li>
+            <li><strong>Legitimate Match Restarts:</strong> If an explicit restart is triggered under the rules (e.g., BingoBot error or agreed upon restart due to console crash), both players should DNF inside the Racetime room and create a new room (with new board). This will <strong>not</strong> count as a DNF toward the tournament median.</li>
         </ul>
     </div>
 
