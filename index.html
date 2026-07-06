@@ -187,6 +187,53 @@
             vertical-align: middle; /* Centers it vertically with the text */
             margin-right: 15px;    /* Pushes the text away from the logo slightly */
         }
+        /* Custom Hybrid Bracket Grid Styles */
+        .bracket-wrapper {
+            margin: 30px 0;
+            background-color: #161616;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        .bracket-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px; /* Gives nodes a separate "card" look */
+        }
+        .bracket-table th {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            border-radius: 4px;
+        }
+        .bracket-node {
+            background-color: #252525;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        .bracket-node.winners {
+            border-left: 4px solid #00e676; /* Green border for active winners side */
+        }
+        .bracket-node.losers {
+            border-left: 4px solid #ff9100; /* Orange border for redemption path */
+        }
+        .bracket-node.gf {
+            border-left: 4px solid #ffcc00; /* Gold border for Grand Finals */
+            background-color: #2a2200;
+        }
+        .bracket-node.reset {
+            border-left: 4px solid #ff1744; /* Red border for volatile reset condition */
+            font-style: italic;
+        }
+        .bracket-node.custom-empty {
+            background: transparent;
+            border: none;
+            color: #444;
+        }
     </style>
 </head>
 <body>
@@ -245,9 +292,9 @@
                         <td>3 weeks long, 1 match per week. Promotion & Relegation format in groups of 8.</td>
                     </tr>
                     <tr>
-                        <td class="highlight">Single Elimination Bracket</td>
+                        <td class="highlight">Hybrid Elimination Bracket</td>
                         <td>September 20th - October 18th/25th</td>
-                        <td>Top 16 (or Top 24 if there are 32+ entrants).</td>
+                        <td>Top 16 (or Top 24 if there are 32+ entrants). Single elimination up to Top 8, then double elimination with free-for-all matches in Losers Bracket (see Rules & Format tab).</td>
                     </tr>
                 </tbody>
             </table>
@@ -340,7 +387,7 @@
         <ul class="rules-list">
             <li>The Groups phase consists of <strong>3 rounds</strong>. Each round lasts exactly one week and must be finished by <strong>Monday at 6PM UTC</strong>. </li>
             <li>If all matches in a round finish early, pairings for the next round may be determined early so players can begin scheduling.</li>
-            <li><strong>Finalizing Standings:</strong> After Round 3, ranked groups of up to 8 players are finalized. The median time within those groups determines the seeding for the top 16/24 single elimination bracket.</li>
+            <li><strong>Finalizing Standings:</strong> After Round 3, ranked groups of up to 8 players are finalized. The median time within those groups determines the seeding for the top 16/24 bracket.</li>
             <li><strong>Bracket Qualification Rules:</strong>
                 <ul>
                     <li><strong>Fewer than 32 entrants:</strong> Top 12 players (the top group + top half of the second group) get seeds 1–12. <span class="highlight"> (New!) From the remaining players with the top 4 median times, seeds 1-4 (in order) will choose their opponent in the Round of 16.</span></li>
@@ -351,12 +398,72 @@
         </ul>
 
         <!-- Section 7 -->
-        <h3>Bracket Phase: Single-Elimination</h3>
+        <h3>Bracket Phase: Hybrid Elimination Top 16/24 Bracket</h3>
         <ul class="rules-list">
-            <li>The final phase is a single-elimination bracket where every match is a <strong>Best of 1</strong>.</li>
+            <li>The final bracket is a mix of single elimination and double elimination (starting at Top 8), where every match is a <strong>Best of 1</strong>.</li>
             <li><strong>Pairings:</strong> Seeding is directly pulled from the Groups phase ranking. Highest seed plays lowest seed (1 vs 16, 2 vs 15, etc.). <span class="highlight"> (New!) See the notes above about how the first round of matches are determined.</span></li>
             <li><strong>Rematch Prevention:</strong> To avoid direct rematches from the groups phase in Round 1 of the bracket, the tournament coordinators will swap the lower-seeded player with the next closest seed.</li>
         </ul>
+        
+        <div class="bracket-wrapper">
+            <h3>Bracket Phase Workflow Timeline</h3>
+            <div class="table-container">
+                <table class="bracket-table">
+                    <thead>
+                        <tr>
+                            <th>Week 1 (Top 16 / 24)</th>
+                            <th>Week 2 (Top 8)</th>
+                            <th>Week 3 (Top 4)</th>
+                            <th>Week 4 (Finals)</th>
+                            <th>Week 5 (Grand Finals)</th>
+                            <th>Week 6 (Reset Match)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Winners Bracket Tier -->
+                        <tr>
+                            <td class="bracket-node winners initial-round">
+                                <strong>Top 16 / 24 Matches</strong><br>
+                                <small>Losers are eliminated. In the case of Top 24, seeds 9-24 face off, and <br>the Top 8 Seeds receive a Bye</small>
+                            </td>
+                            <td class="bracket-node winners">
+                                <strong>Winners Quarterfinals (1v1)</strong><br>
+                                <small>4 winners advance to Winners Semis<br>4 losers face off in a winner-takes-all 4 person Free-For-All</small>
+                            </td>
+                            <td class="bracket-node winners">
+                                <strong>Winners Semifinals (1v1)</strong><br>
+                                <small>2 Advance to Winners Finals<br>2 to Losers FFA</small>
+                            </td>
+                            <td class="bracket-node winners">
+                                <strong>Winners Finals (1v1)</strong><br>
+                                <small>Winner advances to Grand Finals<br> Loser joins a winner-takes-all 3 person Free-For-All</small>
+                            </td>
+                            <td rowspan="2" class="bracket-node gf">
+                                <strong>Grand Finals (1v1)</strong><br>
+                                <small>Winners Champ vs<br>Losers Champ</small>
+                            </td>
+                            <td rowspan="2" class="bracket-node reset">
+                                <strong>Bracket Reset (1v1)</strong><br>
+                                <small>Only if Losers<br>Champ wins GF</small>
+                            </td>
+                        </tr>
+                        <!-- Losers Bracket Tier -->
+                        <tr>
+                            <td class="bracket-node custom-empty">---</td>
+                            <td class="bracket-node custom-empty">---</td>
+                            <td class="bracket-node losers">
+                                <strong>4-Man FFA Race</strong><br>
+                                <small>4 Top 8 Losers<br><span class="highlight">1 Fastest Moves On</span></small>
+                            </td>
+                            <td class="bracket-node losers">
+                                <strong>3-Man FFA Race</strong><br>
+                                <small>1 FFA Survivor + 2 Semi Losers<br><span class="highlight">1 Fastest Moves On</span></small>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <!-- Groups Phase Tab -->
@@ -369,7 +476,7 @@
 
         <h3>What is this format?</h3>
         <p>Rather than a Swiss Rounds format, this year's bracket qualifying phase will again be a <strong>"King of the Hill" (Promotion & Relegation)</strong> format. Entrants are broken into groups of 8, with each group divided into a top half and a lower half. The top half faces the lower half, and players dynamically move between groups each round depending on their specific match results and times.</p>
-        <p><em>The goal:</em> Have exciting matches between players of similar skill much sooner, ultimately producing a similar ranking to a Swiss or Round Robin format for the single elimination bracket.</p>
+        <p><em>The goal:</em> Have exciting matches between players of similar skill much sooner, ultimately producing a similar ranking to a Swiss or Round Robin format for the bracket.</p>
 
         <!-- Color Legend Grid Matrix -->
         <h3>Round Outcomes & Group Movements</h3>
@@ -439,7 +546,7 @@
 
         <div class="faq-item">
             <div class="faq-question">Who can join this tournament?</div>
-            <p class="faq-answer">Anyone who has completed at least 1 OoT Bingo race on Racetime (ever) before signup closes can join. You will need to be available for 1 match a week, starting at the end of August for 3 weeks. The top 16/24 single elimination bracket will last 4-5 weeks after this.</p>
+            <p class="faq-answer">Anyone who has completed at least 1 OoT Bingo race on Racetime (ever) before signup closes can join. You will need to be available for 1 match a week, starting at the end of August for 3 weeks. The top 16/24 bracket will last 6-8 weeks after this.</p>
         </div>
 
         <div class="faq-item">
